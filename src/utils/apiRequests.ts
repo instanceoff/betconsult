@@ -27,10 +27,10 @@ const sendGetRequestToApi = async (
     ...additionalReuqestOptions,
   });
 };
-export async function getSomeFixtures(): Promise<FixturesResponse[]> {
-  const rawRes = await sendGetRequestToApi(
-    "fixtures?status=1H-HT-2H-ET-BT-P-SUSP-INT-LIVE&last=20",
-  );
+export async function getNextFixtures(
+  amount?: number,
+): Promise<FixturesResponse[]> {
+  const rawRes = await sendGetRequestToApi(`fixtures?next=${amount ?? 50}`);
   const schema = createResponseSchema<typeof FixturesResponseSchema>(
     FixturesResponseSchema,
   );
@@ -50,9 +50,5 @@ export async function getFixturesByLeagues() {
 }
 
 export async function getInPlayFixtures() {
-  return;
-}
-
-export async function getNextFixtures() {
   return;
 }

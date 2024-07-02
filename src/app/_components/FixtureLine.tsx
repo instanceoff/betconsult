@@ -4,10 +4,12 @@ import { type FixturesResponse } from "~/schemas/fixture";
 
 interface FixtureLine {
   fixtureData: FixturesResponse;
+  showStatus?: boolean;
 }
 
 export const FixtureLine: React.FC<FixtureLine> = ({
   fixtureData: { fixture, goals, league, score, teams },
+  showStatus = false,
 }) => {
   const localizedDate = new Date(fixture.date).toLocaleTimeString([], {
     hour: "2-digit",
@@ -55,9 +57,13 @@ export const FixtureLine: React.FC<FixtureLine> = ({
           <span className="my-auto">{teams.away.name}</span>
         </div>
       </span>
+
       <div className="my-auto ml-auto flex gap-2">
-        <span className=" font-bold text-red-400">{fixture.status.long}</span>
-        <span className="">{localizedDate}</span>
+        {showStatus ? (
+          <span className="font-bold text-red-400">{fixture.status.long}</span>
+        ) : (
+          <span className="">{localizedDate}</span>
+        )}
       </div>
     </section>
   );

@@ -12,8 +12,8 @@ export const FixtureSchema = z.object({
   }),
   venue: z.object({
     id: z.number().nullable(),
-    name: z.string(),
-    city: z.string(),
+    name: z.string().nullable(),
+    city: z.string().nullable(),
   }),
   status: z.object({
     long: z.string(),
