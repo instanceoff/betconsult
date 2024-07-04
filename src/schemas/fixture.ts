@@ -68,11 +68,11 @@ export const ScoreSchema = z.object({
 });
 export type Score = z.infer<typeof ScoreSchema>;
 
-export const FixturesResponseSchema = z.object({
+export const FixturesSchema = z.object({
   fixture: FixtureSchema,
   league: LeagueSchema,
   teams: TeamsSchema,
   goals: GoalsSchema,
   score: ScoreSchema,
 });
-export type FixturesResponse = z.infer<typeof FixturesResponseSchema>;
+export type FixturesResponse = z.infer<typeof FixturesSchema>;

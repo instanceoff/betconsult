@@ -5,7 +5,7 @@ import FixturesList from "./_components/FixturesList";
 
 export default async function Home() {
   // const hello = await api.post.hello({ text: "from tRPC" });
-  const fixtures: FixturesResponse[] = await api.get.getSomeFixtures();
+  const fixtures: FixturesResponse[] = await api.get.getNextFixtures();
   return (
     <>
       <main className="w-full">

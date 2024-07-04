@@ -1,6 +1,6 @@
 import React from "react";
 import { type FixturesResponse } from "~/schemas/fixture";
-import { FixtureLine } from "./FixtureLine";
+import { FixtureLine } from "./fixture-line";
 
 interface FixturesList {
   fixtures: FixturesResponse[];

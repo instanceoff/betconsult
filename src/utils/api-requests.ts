@@ -1,8 +1,5 @@
 import { env } from "~/env";
-import {
-  type FixturesResponse,
-  FixturesResponseSchema,
-} from "../schemas/fixture";
+import { type FixturesResponse, FixturesSchema } from "../schemas/fixture";
 import { createResponseSchema } from "~/schemas/response";
 
 const myHeaders = new Headers();
@@ -31,17 +28,13 @@ export async function getNextFixtures(
   amount?: number,
 ): Promise<FixturesResponse[]> {
   const rawRes = await sendGetRequestToApi(`fixtures?next=${amount ?? 50}`);
-  const schema = createResponseSchema<typeof FixturesResponseSchema>(
-    FixturesResponseSchema,
-  );
+  const schema = createResponseSchema(FixturesSchema);
   return schema.parse(await rawRes.json()).response;
 }
 
 export async function getLeagues() {
   const rawRes = await sendGetRequestToApi("leagues?current=true");
-  const schema = createResponseSchema<typeof FixturesResponseSchema>(
-    FixturesResponseSchema,
-  );
+  const schema = createResponseSchema(FixturesSchema);
   return schema.parse(await rawRes.json()).response;
 }
 
@@ -51,4 +44,12 @@ export async function getFixturesByLeagues() {
 
 export async function getInPlayFixtures() {
   return;
+}
+
+export async function getFixtureById(fixtureIds: number[]) {
+  const rawRes = await sendGetRequestToApi(
+    `fixtures?ids=${fixtureIds.join("-")}`,
+  );
+  const schema = createResponseSchema(FixturesSchema);
+  return schema.parse(await rawRes.json()).response;
 }

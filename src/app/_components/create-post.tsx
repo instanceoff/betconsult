@@ -16,6 +16,6 @@ export function CreatePost() {
     },
   });
 
-  const {} = api.get.getSomeFixtures.useQuery();
+  const {} = api.get.getNextFixtures.useQuery();
   return <></>;
 }
