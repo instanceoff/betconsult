@@ -1,29 +1,7 @@
-import { env } from "~/env";
 import { type FixturesResponse, FixturesSchema } from "../schemas/fixture";
-import { createResponseSchema } from "~/schemas/response";
+import { createResponseSchema } from "./schema-helper";
+import { sendGetRequestToApi } from "./api-preferences";
 
-const myHeaders = new Headers();
-
-myHeaders.append("x-rapidapi-key", env.RAPIDAPI_KEY);
-myHeaders.append("x-rapidapi-host", "v3.football.api-sports.io");
-
-const requestOptions: RequestInit = {
-  method: "GET",
-  headers: myHeaders,
-  redirect: "follow",
-  next: {
-    revalidate: 86400,
-  },
-};
-const sendGetRequestToApi = async (
-  request: string,
-  additionalReuqestOptions?: Partial<RequestInit>,
-) => {
-  return fetch(`https://v3.football.api-sports.io/${request}`, {
-    ...requestOptions,
-    ...additionalReuqestOptions,
-  });
-};
 export async function getNextFixtures(
   amount?: number,
 ): Promise<FixturesResponse[]> {

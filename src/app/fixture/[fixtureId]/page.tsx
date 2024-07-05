@@ -2,7 +2,6 @@ import React from "react";
 import { type FixturesResponse } from "~/schemas/fixture";
 import { api } from "~/trpc/server";
 import Image from "next/image";
-import { relative } from "path";
 
 interface FixturePage {
   params: {

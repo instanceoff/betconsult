@@ -1,10 +1,9 @@
 import { api } from "~/trpc/server";
 import { type FixturesResponse } from "~/schemas/fixture";
 import React from "react";
-import FixturesList from "./_components/FixturesList";
+import FixturesList from "./_components/fixture-list";
 
 export default async function Home() {
-  // const hello = await api.post.hello({ text: "from tRPC" });
   const fixtures: FixturesResponse[] = await api.get.getNextFixtures();
   return (
     <>

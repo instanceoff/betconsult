@@ -1,6 +1,6 @@
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { type FixturesResponse } from "~/schemas/fixture";
-import { getFixtureById, getNextFixtures } from "~/utils/apiRequests";
+import { getFixtureById, getNextFixtures } from "~/utils/fixtures-requests";
 import { z } from "zod";
 
 export const getRouter = createTRPCRouter({

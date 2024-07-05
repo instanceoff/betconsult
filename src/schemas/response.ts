@@ -1,11 +1,5 @@
 import { z } from "zod";
 
-export function createResponseSchema<ResponseType extends z.ZodTypeAny>(
-  itemSchema: ResponseType,
-) {
-  return RespondSchema.extend({ response: z.array(itemSchema) });
-}
-
 export const RespondSchema = z.object({
   errors: z.unknown().array().or(z.instanceof(Object)),
   get: z.string(),
